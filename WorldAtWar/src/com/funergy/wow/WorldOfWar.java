@@ -13,7 +13,6 @@ public class WorldOfWar extends JavaPlugin {
 	int ingamecount = 0;
 	int spectatecount = 0;
 	String gameState;
-	String version="v1";
 	
 	String mapName ="towers";
 	String serverName ="DC1";
