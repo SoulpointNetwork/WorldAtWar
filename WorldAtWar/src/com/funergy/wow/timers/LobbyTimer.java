@@ -12,7 +12,7 @@ public class LobbyTimer {
 	
 	public LobbyTimer(){
 		new BukkitRunnable(){
-			int i = 35;
+			int i = 30;
 			@Override
 			public void run() {
 				if(main.getGameState().equalsIgnoreCase("LOBBY")){
