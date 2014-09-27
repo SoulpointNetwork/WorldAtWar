@@ -11,8 +11,9 @@ public class LobbyTimer {
 	public WorldOfWar main;
 	
 	public LobbyTimer(){
+		Bukkit.broadcastMessage(main.getGamePrefix()+"Lobby timer starting.");
 		new BukkitRunnable(){
-			int i = 30;
+			int i = 40;
 			@Override
 			public void run() {
 				if(main.getGameState().equalsIgnoreCase("LOBBY")){
