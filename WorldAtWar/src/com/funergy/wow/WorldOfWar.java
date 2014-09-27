@@ -25,7 +25,6 @@ public class WorldOfWar extends JavaPlugin {
 		Bukkit.getWorld("map").setAutoSave(false);
 		
 		Bukkit.getPluginManager().registerEvents(new JoinEvent(), this);
-
 	}
 
 	public String getGamePrefix(){return gamePrefix;}
