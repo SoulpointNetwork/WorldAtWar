@@ -8,7 +8,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.funergy.wow.WorldOfWar;
 
 public class LobbyTimer {
-	public WorldOfWar main;
+	public static WorldOfWar main = WorldOfWar.instance;
 	
 	public LobbyTimer(){
 		Bukkit.broadcastMessage(main.getGamePrefix()+"Lobby timer starting.");

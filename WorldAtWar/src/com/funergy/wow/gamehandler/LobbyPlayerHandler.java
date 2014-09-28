@@ -11,19 +11,19 @@ import org.bukkit.inventory.meta.ItemMeta;
 import com.funergy.wow.WorldOfWar;
 
 public class LobbyPlayerHandler {
-	public WorldOfWar main;	
+	public static WorldOfWar plugin = WorldOfWar.instance;
 	
-	public void setLobbyPlayerCount(Integer pcount){
-		main.setLobbyCount(pcount);
+	public static void setLobbyPlayerCount(Integer pcount){
+		plugin.setLobbyCount(pcount);
 	}
-	public void giveItems(Player p){
+	public static void giveItems(Player p){
 		p.getInventory().setItem(0, itemStack(Material.WATCH, 1, "&6Choose your team", "Right click to open the GUI"));
 	}
-	public void teleportPlayer(Player p){
+	public static void teleportPlayer(Player p){
 		//teleport the player to the lobby
 	}
 	
-	public ItemStack itemStack(Material mat, Integer amount, String displayname, String Lore){
+	public static ItemStack itemStack(Material mat, Integer amount, String displayname, String Lore){
 		ItemStack im = new ItemStack(mat,amount);
 		ItemMeta m = im.getItemMeta();
 		if(displayname !=null){

@@ -12,33 +12,34 @@ import com.funergy.wow.WorldOfWar;
 import com.funergy.wow.utils.SimpleItemStack;
 
 public class InGamePlayerHandler {
-	public WorldOfWar main;
-	public SimpleItemStack item;
-	public ArrayList<Player> pList = new ArrayList<Player>();
+	public static WorldOfWar plugin = WorldOfWar.instance;
+
+	public static SimpleItemStack item;
+	public static ArrayList<Player> pList = new ArrayList<Player>();
 	
-	public boolean isPlaying(Player p){
+	public static boolean isPlaying(Player p){
 		if(pList.contains(p)){return true;}
 		return false;
 	}
 	
-	public void removePlayer(Player p){
+	public static void removePlayer(Player p){
 		pList.remove(p);
 	}
 	
-	public void addPlayer(Player p){
+	public static void addPlayer(Player p){
 		pList.add(p);
 	}
 	
-	public void setIngamePlayerCount(Integer pcount){
-		main.setIngameCount(pcount);
+	public static void setIngamePlayerCount(Integer pcount){
+		plugin.setIngameCount(pcount);
 	}
-	public void giveStarterItems(Player p){
+	public static void giveStarterItems(Player p){
 		p.getInventory().setItem(0, itemStack(Material.IRON_PICKAXE, 1, "&6StarterPickaxe", ""));
 		p.getInventory().setItem(1, itemStack(Material.IRON_SPADE, 1, "&6StarterSpade", ""));
 
 		
 	}
-	public ItemStack itemStack(Material mat, Integer amount, String displayname, String Lore){
+	public static ItemStack itemStack(Material mat, Integer amount, String displayname, String Lore){
 		ItemStack im = new ItemStack(mat,amount);
 		ItemMeta m = im.getItemMeta();
 		if(displayname !=null){

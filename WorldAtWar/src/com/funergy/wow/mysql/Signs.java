@@ -20,51 +20,51 @@ import nl.soulpoint.api.mysql.SoulPointMySQL;
  *
  */
 public class Signs {
-	private SoulPointMySQL connection;
-	public WorldOfWar main;
+	private static SoulPointMySQL connection;
+	public static WorldOfWar plugin = WorldOfWar.instance;
 	 
 	public Signs() {
         connection = new SoulPointMySQL();
     }
-	public void openConnection(){
+	public static void openConnection(){
         connection.connect();
 	}
 	
-    public void setupDB() throws SQLException {
+    public static void setupDB() throws SQLException {
                 connection.executeUpdate("CREATE TABLE IF NOT EXISTS `SGservers`(`ID` integer,`NAME` varchar(100),`MAP` varchar(100),`PLAYERC` integer,`MAXP` integer,`STATE` varchar(100))");
         }
-    public void setId(){
+    public static void setId(){
     	try{
-    		connection.executeUpdate("INSERT INTO `SGservers`(ID,NAME,MAP,PLAYERC,MAXP,STATE)\nvalues ('"+main.getSignID()+"','"+main.getServerName()+"','" + main.getMapName() + "', '" +0+"','"+16+"','"+"LOBBY"+"');");
+    		connection.executeUpdate("INSERT INTO `SGservers`(ID,NAME,MAP,PLAYERC,MAXP,STATE)\nvalues ('"+plugin.getSignID()+"','"+plugin.getServerName()+"','" + plugin.getMapName() + "', '" +0+"','"+16+"','"+"LOBBY"+"');");
     	}catch(Exception e){
     		e.printStackTrace();
     	}
     }
     
-    public void setStateIngame(){
+    public static void setStateIngame(){
     	try {
-    		connection.executeUpdate("UPDATE `SGservers` SET STATE="+main.getGameState()+" WHERE ID="+main.getSignID()+";");
+    		connection.executeUpdate("UPDATE `SGservers` SET STATE="+plugin.getGameState()+" WHERE ID="+plugin.getSignID()+";");
     } catch (Exception e) {
             e.printStackTrace();
     }
     }
 
-    	public void setStateLobby(){
+    	public static void setStateLobby(){
         	try {
-                connection.executeUpdate("UPDATE `SGservers` SET STATE="+"LOBBY"+" WHERE ID="+main.getSignID()+";");
+                connection.executeUpdate("UPDATE `SGservers` SET STATE="+"LOBBY"+" WHERE ID="+plugin.getSignID()+";");
         } catch (Exception e) {
                 e.printStackTrace();
         }
     	
     }
-    public void setPlayerc(int playerc){
+    public static void setPlayerc(int playerc){
     	try {
-            connection.executeUpdate("UPDATE `SGservers` SET PLAYERC="+main.getLobbyPCount()+" WHERE ID="+main.getSignID()+";");
+            connection.executeUpdate("UPDATE `SGservers` SET PLAYERC="+plugin.getLobbyPCount()+" WHERE ID="+plugin.getSignID()+";");
     } catch (Exception e) {
             e.printStackTrace();
     }
     }
-    public String getid(){
+    public static String getid(){
  	   
 	        try {
 	             ResultSet result =connection.select("select STATE from SGservers where ID='" +1 + "'");
